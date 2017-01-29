@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using NPoco.Tests.Common;
 using NUnit.Framework;
 
@@ -120,7 +121,8 @@ namespace NPoco.Tests.FluentTests.QueryTests
         public void EmptyInQueryWithGuids()
         {
             var list = new List<Guid>();
-            var data = Database.Fetch<User>("select * from users where uniqueid in (@1) and userid = @0 and name = @2", 1, list, "name");
+            list = list.Count == 0 ? null : list;
+            var data = Database.Fetch<User>("select * from users where uniqueid in (@1) and userid = @0 and name = @2", 1, list, "Name1");
             Assert.AreEqual(0, data.Count);
         }
     }

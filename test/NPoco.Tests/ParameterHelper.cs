@@ -35,7 +35,19 @@ namespace NPoco.Tests
             var args = new List<object>();
             var resultSql = ParameterHelper.ProcessParams(sql, new[] { list }, args);
 
-            Assert.AreEqual(default(int), args[0]);
+            Assert.AreEqual(0, args.Count);
+        }
+        [Test]
+        public void TestNullListInParameters()
+        {
+            var sql = "SELECT * FROM test WHERE testID in (@0)";
+
+            List<int> list = null;
+
+            var args = new List<object>();
+            var resultSql = ParameterHelper.ProcessParams(sql, new[] { list }, args);
+
+            Assert.AreEqual(1, args.Count);
         }
     }
 }

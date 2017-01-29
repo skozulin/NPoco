@@ -1,5 +1,6 @@
-﻿{
+{
   "version": "3.4.8-*",
+  "name": "xPoco",
   "description": "An extremely easy to use Micro-ORM supporting Sql Server, MySQL, PostgreSQL, Oracle, Sqlite, SqlCE. Originally Schotime's PetaPoco branch.",
   "packOptions": {
     "authors": [
